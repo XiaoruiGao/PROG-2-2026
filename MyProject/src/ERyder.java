@@ -7,7 +7,7 @@ public class ERyder {
 
 public ERyder(String bikeID, int batteryLevel, boolean isAvailable, float kmDriven){
     this.bikeID = bikeID;
-    setBatteryLevel(batteryLevel);
+    this.batteryLevel = batteryLevel;
     this.isAvailable = isAvailable;
     this.kmDriven = kmDriven;
 }
@@ -56,10 +56,10 @@ public void setKmDriven(float kmDriven){
     this.kmDriven = kmDriven;
 }
 public static void main(String[]args){
-    ERyder bike = new ERyder("BK001", 80, true, 15.5f);
+    ERyder bike = new ERyder("123456", 80, true, 15.5f);
     bike.ride();
     bike.printBikeDetails();
-    bike.setBatteryLevel(110);
+    bike.setBatteryLevel(30);
     System.out.println("Current battery: " + bike.getBatteryLevel());
 }
 }
