@@ -1,5 +1,6 @@
 public class Main {
     public static void main(String[] args) {
-        System.out.println("Project created successfully!");
+        AdminPanel adminPanel = new AdminPanel();
+        adminPanel.userManagementOptions();
     }
 }
