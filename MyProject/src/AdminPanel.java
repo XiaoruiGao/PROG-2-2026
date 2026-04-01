@@ -6,6 +6,30 @@ import java.util.Scanner;
 
 
 public class AdminPanel {
+    private Scanner scanner = new Scanner(System.in);
+    private BikeRental bikeRental = new BikeRental();
+public void showAdminMenu() {
+        while (true) {
+            System.out.println("\n ERyder Administrator panel");
+            System.out.println("1. Demo the Bike Rental System");
+            System.out.println("0. Exit");
+            System.out.print("Please select an option: ");
+            int option = scanner.nextInt();
+            switch (option) {
+                case 1:
+                    bikeRental.simulateApplicationInput();
+                    break;
+                case 0:
+                    System.out.println("Exiting Admin Panel...");
+                    scanner.close();
+                    System.exit(0);
+                    break;
+                default:
+                    System.out.println("Invalid option! Please try again.");
+            }
+        }
+    }
+}
 
     private List<RegisteredUsers> registeredUsersList;
     private Scanner scanner; 
@@ -221,4 +245,4 @@ public class AdminPanel {
 
         System.out.println("User with email " + targetEmail + " updated successfully!");
     }
-}
+
