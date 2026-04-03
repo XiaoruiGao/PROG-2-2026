@@ -12,6 +12,8 @@ public class AdminPanel {
             System.out.println("\n===== ERyder Admin =====");
             System.out.println("1. Bike Rental Demo");
             System.out.println("2. User Management");
+            System.out.println("3. View System Logs");       
+            System.out.println("4. Manage Pending Requests");
             System.out.println("0. Exit");
             System.out.print("Choose: ");
 
@@ -25,6 +27,12 @@ public class AdminPanel {
                     case 2:
                         userMenu();
                         break;
+                    case 3:                      
+                        bikeService.viewSystemLogs();
+                        break;
+                    case 4:
+                        managePendingRequestsMenu();
+                        break;
                     case 0:
                         System.out.println("Exit.");
                         scanner.close();
@@ -34,6 +42,33 @@ public class AdminPanel {
                 }
             } catch (Exception e) {
                 System.out.println("Invalid input! Please enter a number.");
+            }
+        }
+    }
+    private void managePendingRequestsMenu() {
+        while (true) {
+            System.out.println("\n--- Manage Pending Bike Requests ---");
+            System.out.println("1. View Queue");
+            System.out.println("2. Update Queue (Remove First)");
+            System.out.println("3. Back to Admin Menu");
+            System.out.print("Choose: ");
+
+            try {
+                int c = Integer.parseInt(scanner.nextLine());
+                switch (c) {
+                    case 1:
+                        bikeService.viewRequestQueue();
+                        break;
+                    case 2:                  
+                        bikeService.updateQueue();
+                        break;
+                    case 3:
+                        return;
+                    default:
+                        System.out.println("Invalid option.");
+                }
+            } catch (Exception e) {
+                System.out.println("Invalid input!");
             }
         }
     }
@@ -52,7 +87,7 @@ public class AdminPanel {
         } else {
             System.out.println("Welcome back, " + email);
         }
-
+         bikeService.reserveBikeWithUser(email, loc);
         String bikeID = bikeService.validateAndFindBike(loc);
         if (bikeID == null) return;
 
